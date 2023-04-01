@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Concrete\EfCore\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ETICARET.Entities\ETICARET.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

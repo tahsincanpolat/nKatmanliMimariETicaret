@@ -1,0 +1,12 @@
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\bin\Debug\net6.0\ETICARET.Business.deps.json
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\bin\Debug\net6.0\ETICARET.Business.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\bin\Debug\net6.0\ETICARET.Business.pdb
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.csproj.AssemblyReference.cache
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.GeneratedMSBuildEditorConfig.editorconfig
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.AssemblyInfoInputs.cache
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.AssemblyInfo.cs
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.csproj.CoreCompileInputs.cache
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\refint\ETICARET.Business.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.pdb
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ref\ETICARET.Business.dll

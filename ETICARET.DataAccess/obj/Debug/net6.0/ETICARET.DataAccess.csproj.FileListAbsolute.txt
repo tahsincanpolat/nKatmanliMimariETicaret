@@ -1,0 +1,17 @@
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\bin\Debug\net6.0\ETICARET.DataAccess.deps.json
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\bin\Debug\net6.0\ETICARET.DataAccess.runtimeconfig.json
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\bin\Debug\net6.0\ETICARET.DataAccess.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\bin\Debug\net6.0\ETICARET.DataAccess.pdb
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\bin\Debug\net6.0\ETICARET.Entities.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\bin\Debug\net6.0\ETICARET.Entities.pdb
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.csproj.AssemblyReference.cache
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.AssemblyInfoInputs.cache
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.AssemblyInfo.cs
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.csproj.CoreCompileInputs.cache
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.csproj.CopyComplete
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\refint\ETICARET.DataAccess.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.pdb
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ETICARET.DataAccess.genruntimeconfig.cache
+D:\TahsinCanpolat\Web\etrade\ETICARET.DataAccess\obj\Debug\net6.0\ref\ETICARET.DataAccess.dll

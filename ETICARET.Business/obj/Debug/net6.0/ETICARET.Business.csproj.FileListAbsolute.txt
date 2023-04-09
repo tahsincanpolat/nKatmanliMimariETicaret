@@ -10,3 +10,8 @@ D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Busines
 D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\refint\ETICARET.Business.dll
 D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.pdb
 D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ref\ETICARET.Business.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\bin\Debug\net6.0\ETICARET.DataAccess.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\bin\Debug\net6.0\ETICARET.Entities.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\bin\Debug\net6.0\ETICARET.DataAccess.pdb
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\bin\Debug\net6.0\ETICARET.Entities.pdb
+D:\TahsinCanpolat\Web\etrade\ETICARET.Business\obj\Debug\net6.0\ETICARET.Business.csproj.CopyComplete

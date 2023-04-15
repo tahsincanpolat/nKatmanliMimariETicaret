@@ -71,3 +71,6 @@ D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\ETICARET.Business.p
 D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\ETICARET.DataAccess.pdb
 D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\ETICARET.Entities.pdb
 D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\obj\Debug\net6.0\ETICARET.WebUI.csproj.CopyComplete
+D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\package-lock.json
+D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\package.json
+D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\Newtonsoft.Json.dll

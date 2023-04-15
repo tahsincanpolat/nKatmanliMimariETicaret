@@ -1,8 +1,15 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+﻿@model ProductListModel
+<div class="row">
+    <div class="col-md-3">
+        <!-- Invoke -->
+    </div>
+    <div class="col-md-9">
+        <partial name="_slider" />
+        <div class="row">
+            @foreach (Product item in Model.Products)
+            {
+                <partial name="_products" for="@item"/>
+            }
+        </div>
+    </div>
 </div>

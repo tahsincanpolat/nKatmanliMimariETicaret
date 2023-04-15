@@ -1,0 +1,67 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Shopping</a>
+        <div class="col-md-9">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/Home/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Shop" asp-action="List">Products</a>
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Admin" asp-action="CreateProduct">Add Product</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="/admin/product">Admin Product</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" asp-controller="Admin" asp-action="CreateCategory">Create Category</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Admin" asp-action="CategoryList">Admin Categories</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Cart" asp-action="Index">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Cart" asp-action="Orders">Orders</a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul class="navbar-nav mr-auto">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Manage">@User.Identity.Name</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                    </li>
+                                      
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+ </nav>

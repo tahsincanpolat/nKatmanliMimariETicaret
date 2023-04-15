@@ -1,4 +1,5 @@
-﻿using ETICARET.WebUI.Models;
+﻿using ETICARET.Business.Abstract;
+using ETICARET.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +7,16 @@ namespace ETICARET.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IProductService _productService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProductService productService) // Injection
         {
-            _logger = logger;
+            _productService = productService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(new ProductListModel() { Products = _productService.GetAll() });
         }
 
 

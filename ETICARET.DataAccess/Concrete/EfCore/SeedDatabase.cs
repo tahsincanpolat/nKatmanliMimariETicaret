@@ -52,7 +52,7 @@ namespace ETICARET.DataAccess.Concrete.EfCore
         };
 
         private static ProductCategory[] ProductCategories =
-       {
+        {
             new ProductCategory(){ Product = Products[0],Category=Categories[0]},
             new ProductCategory(){ Product = Products[0],Category=Categories[1]},
             new ProductCategory(){ Product = Products[1],Category=Categories[0]},

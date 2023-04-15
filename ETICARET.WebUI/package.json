@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "bootstrap": "5.2.1",
+    "jquery": "3.6.1",
+    "jquery-validation": "1.19.5",
+    "jquery-validation-unobtrusive": "4.0.0",
+    "ckeditor": "4.12.1"
+  }
+}

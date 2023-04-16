@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ETICARET.WebUI</title>
+    <title>@ViewData["Title"] - Üçüncübinyıl ETicaret</title>
     <link rel="stylesheet" href="/modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/style.css" />
     <script src="/modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
     <partial name="_navbar" />
-    <div class="container pt-5 mb-5">
+    <div class="container pageContainer mb-5">
         @if (TempData["message"]!=null)
         {
             <partial name="_resultMessage" model="@(TempData.Get<ResultMessage>("message"))"/>

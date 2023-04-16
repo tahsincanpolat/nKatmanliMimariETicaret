@@ -1,0 +1,50 @@
+﻿@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section Scripts{
+    <script src="~/modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/modules/jquery-validation/dist/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h1>Register</h1>
+
+<h4>Register User</h4>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Register">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+             <div class="form-group">
+                 <label asp-for="FullName" class="control-label"></label>
+                 <input asp-for="FullName" class="form-control"/>
+                 <span asp-validation-for="FullName" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                 <label asp-for="UserName" class="control-label"></label>
+                 <input asp-for="UserName" class="form-control"/>
+                 <span asp-validation-for="UserName" class="text-danger"></span>
+             </div>
+              <div class="form-group">
+                 <label asp-for="Password" class="control-label"></label>
+                 <input asp-for="Password" class="form-control"/>
+                 <span asp-validation-for="Password" class="text-danger"></span>
+             </div>
+              <div class="form-group">
+                 <label asp-for="RePassword" class="control-label"></label>
+                 <input asp-for="RePassword" class="form-control"/>
+                 <span asp-validation-for="RePassword" class="text-danger"></span>
+             </div>
+              <div class="form-group">
+                 <label asp-for="Email" class="control-label"></label>
+                 <input asp-for="Email" class="form-control"/>
+                 <span asp-validation-for="Email" class="text-danger"></span>
+             </div>
+              <div class="form-group">
+                <input type="submit" value="Register Now" class="btn btn-primary" />
+             </div>
+        </form>
+    </div>
+</div>

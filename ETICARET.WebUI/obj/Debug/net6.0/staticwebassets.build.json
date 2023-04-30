@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ekXyPe9+G1vfOBipIUqB3EbGuzZfv34CbXMV81wVKKw=",
+  "Hash": "W4x9eaymDm5Kf3ot38+gXSaEZdPs2x3HDT9yiv3p27g=",
   "Source": "ETICARET.WebUI",
   "BasePath": "_content/ETICARET.WebUI",
   "Mode": "Default",
@@ -253,6 +253,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\9.jpg"
+    },
+    {
+      "Identity": "D:\\TahsinCanpolat\\Web\\etrade\\ETICARET.WebUI\\wwwroot\\img\\samsung.jpg",
+      "SourceId": "ETICARET.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\TahsinCanpolat\\Web\\etrade\\ETICARET.WebUI\\wwwroot\\",
+      "BasePath": "_content/ETICARET.WebUI",
+      "RelativePath": "img/samsung.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\samsung.jpg"
     },
     {
       "Identity": "D:\\TahsinCanpolat\\Web\\etrade\\ETICARET.WebUI\\wwwroot\\img\\slider1.png",

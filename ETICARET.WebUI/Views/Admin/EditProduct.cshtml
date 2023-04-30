@@ -1,0 +1,81 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<script>
+    $(document).ready(function(){
+        $("#fileImage").change(function(e) {
+            $("#imgPreview").show();
+            $("#imgPreview").attr("src",URL.createObjectURL(e.target.files[0]))
+        })
+    })
+</script>
+
+<script src="/modules/jquery/dist/jquery.min.js"></script>
+@section Scripts{
+    <script src="~/modules/jquery/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/modules/jquery/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/modules/ckeditor/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace("editor")
+    </script>
+}
+<h1>Edit Product</h1>
+<form asp-controller="Admin" asp-action="EditProduct" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <div class="col-md-9 offset-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Product Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            @foreach (var image in Model.Images)
+            {
+                <div class="col-md-9 offset-md-3">
+                   <label asp-for="@image.ImageUrl" class="form-label"></label>
+                   <img src="~/img/@image.ImageUrl" width="80" id="imgPreview">
+                   <input type="file" name="files" value="" id="fileImage" />
+                </div>
+            }
+            @for (var i = 0; i < 4 - @Model.Images.Count; i++)
+            {
+                 <div class="col-md-9 offset-md-3">
+                   <label class="form-label">Image Url</label>
+                   <input type="file" name="files" value="" />
+                </div>
+            }
+            <div class="col-md-9 offset-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea id="editor" asp-for="Description" class="form-control" placeholder="Description" ></textarea>
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="col-md-9 offset-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-control" placeholder="Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div class="col-md-9 offset-3 mt-3">
+                <button type="submit" class="btn btn-primary">Save Product</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            @foreach (var item in (List<Category>)ViewBag.Categories)
+            {
+                <div class="form-check">
+                    <input 
+                        name="categoryIds" 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        value="@item.Id"
+                        id="category@item.Id"
+                        @(Model.SelectedCategory.Any(i => i.Id == item.Id) ? "checked" : "")
+                     />
+                     <label class="form-check-label" for="category@(item.Id)">@item.Name</label>
+                </div>
+            }
+        </div>
+    </div>
+</form>

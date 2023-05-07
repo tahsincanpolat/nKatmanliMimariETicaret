@@ -101,7 +101,7 @@ namespace ETICARET.DataAccess.Concrete.EfCore
                                 .Where(i => i.ProductCategories.Any(a => a.Category.Name.ToLower() == category.ToLower()));
                 }
 
-                return products.Skip((page - 1 * pageSize)).Take(pageSize).ToList();
+                return products.Skip(((page - 1) * pageSize)).Take(pageSize).ToList();
             }
         }
 

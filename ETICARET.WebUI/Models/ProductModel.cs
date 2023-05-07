@@ -17,6 +17,7 @@ namespace ETICARET.WebUI.Models
         [Required]
         [Range(10000,40000)] // Aralık belirtme
         public decimal Price { get; set; }  
+
         public List<Category> SelectedCategory { get; set; }
 
         public ProductModel()

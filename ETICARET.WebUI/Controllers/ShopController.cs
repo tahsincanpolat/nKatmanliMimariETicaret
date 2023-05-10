@@ -1,4 +1,5 @@
 ﻿using ETICARET.Business.Abstract;
+using ETICARET.Entities;
 using ETICARET.WebUI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace ETICARET.WebUI.Controllers
         [Route("products/{category?}")]
         public IActionResult List(string category, int page=1)
         {
-            const int pageSize = 1;
+            const int pageSize = 10;
 
             var products = new ProductListModel()
             {
@@ -34,9 +35,28 @@ namespace ETICARET.WebUI.Controllers
             return View(products);
         }
 
-        public IActionResult Index()
+        public IActionResult Details(int? id)
         {
-            return View();
+
+            if(id == null)
+            { 
+                return NotFound(); 
+            }
+
+            Product product = _productService.GetProductDetails(id.Value);
+
+            if(product == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(new ProductDetailsModel()
+            {
+                Products = product,
+                Categories = product.ProductCategories.Select(i => i.Category).ToList(),
+                Comments = product.Comments
+            });
         }
     }
 }

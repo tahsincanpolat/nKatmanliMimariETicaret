@@ -1,0 +1,66 @@
+﻿@using System.Security.Claims
+
+@model List<Comment>
+
+@{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
+
+<style>
+    .btn-xs{
+        --bs-btn-padding-y: .25rem;
+        --bs-btn-padding-x: .5rem;
+        --bs-btn-font-size: .75rem;
+    }
+
+</style>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-12">
+           <div class="input-group">
+               <input type="text" id="new_comment_text" class="form-control" placeholder="Yorumunuz...">
+               <span class="input-group-btn">
+                   <button type="button" class="btn btn-success" onclick="doComment(this,'new_clicked',-1)">
+                       <span class="fas fa-share"></span> Gönder
+                   </button>
+               </span>
+           </div>
+        </div>
+    </div>
+}
+@if (Model.Count > 0)
+{
+    @foreach (var comment in Model)
+    {
+        <div class="d-flex">
+            <div class="flex-grow-1 ms-12 mt-3">
+                <h6 class="col-md-12">Anonymous <small class="text-muted"><i>@comment.CreateOn.ToString("dddd, dd MMMM yyyy")</i></small></h6>
+                <span class="col-md-10" id="comment_text_@comment.Id" contenteditable="false">
+                    @comment.Text
+                </span>
+                @if(User.Identity.IsAuthenticated && userId == comment.UserId)
+                {
+                    <span class="col-md-2 float-end">
+                        <button type="button" class="btn btn-warning btn-xs" data-edit-mode="false" onclick="doComment(this,'edit_clicked',@comment.Id,'#comment_text_@comment.Id')">
+                              <span class="fas fa-edit fa-xs"></span> 
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs" onclick="doComment(this,'delete_clicked',@comment.Id')">
+                              <span class="fas fa-trash fa-xs"></span> 
+                        </button>
+                    </span>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-warning mt-2">Yorum yapılmamıştır. İlk yorumu yapmak ister misiniz?</div>
+}

@@ -13,6 +13,14 @@
         --bs-btn-font-size: .75rem;
     }
 
+    .editable-content{
+        border: 2px solid grey;
+        width: 350px;
+        display: inline-block;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
 </style>
 
 @if (User.Identity.IsAuthenticated)
@@ -51,7 +59,7 @@
                         <button type="button" class="btn btn-warning btn-xs" data-edit-mode="false" onclick="doComment(this,'edit_clicked',@comment.Id,'#comment_text_@comment.Id')">
                               <span class="fas fa-edit fa-xs"></span> 
                         </button>
-                        <button type="button" class="btn btn-warning btn-xs" onclick="doComment(this,'delete_clicked',@comment.Id')">
+                        <button type="button" class="btn btn-warning btn-xs" onclick="doComment(this,'delete_clicked',@comment.Id)">
                               <span class="fas fa-trash fa-xs"></span> 
                         </button>
                     </span>

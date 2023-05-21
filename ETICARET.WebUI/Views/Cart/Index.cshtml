@@ -1,0 +1,89 @@
+﻿@model CartModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>Shopping Cart</h1>
+<div class="row mt-5">
+    <div class="col-md-8">
+        @if(Model.CartItems.Count > 0)
+        {
+             <div class="text-center">
+                <h4>Cart Items</h4>
+             </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartItems)
+                    {
+                        <tr>
+                            <td scope="row"><img src="~/img/@item.ImageUrl" width="80" /></td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.Quantity</td>
+                            <td>@((item.Quantity * @item.Price).ToString("c"))</td>
+                            <td>
+                                <form asp-controller="Cart" asp-action="DeleteFromCart" method="POST">
+                                    <input type="hidden" name="productId" value="@item.ProductId">
+                                    <button class="btn btn-danger btn-sm" type="submit">
+                                        <i class="fa fa-times fa-fw"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                No Product in Cart!
+            </div>
+        }
+    </div>
+   <div class="col-md-4">
+       @if (Model.CartItems.Count > 0)
+        {
+           <div class="text-left">
+               <h4>Cart Summary</h4>
+           </div>
+        }
+        @if (Model.CartItems.Count > 0)
+        {
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Cart Total</th>
+                        <td>@Model.TotalPrice().ToString("c")</td>
+                    </tr>
+                    <tr>
+                        <th>Shipping</th>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <th>Order Total</th>
+                        <td><strong>@Model.TotalPrice().ToString("c")</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a href="/" class="btn btn-primary">
+                    <i class="fa fa-arrow-circle-left fa-fw"></i> Continue Shopping
+                </a>
+                <a href="/checkout" class="btn btn-primary">
+                    <i class="fa fa-arrow-circle-right fa-fw"></i> Checkout
+                </a>
+            </div>
+        }
+    </div>
+</div>
+

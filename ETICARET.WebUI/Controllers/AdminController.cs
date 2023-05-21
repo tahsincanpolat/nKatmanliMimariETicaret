@@ -42,6 +42,8 @@ namespace ETICARET.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProduct(ProductModel model,List<IFormFile> files)
         {
+            // Ödev Admin ürün eklerken category seçsin
+            ModelState.Remove("SelectedCategory");
 
             if (ModelState.IsValid)
             {

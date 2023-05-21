@@ -19,3 +19,7 @@ body {
 .pageContainer{
     padding-top: 75px;
 }
+.card-title > a {
+    text-decoration: none;
+    color: #747474
+}

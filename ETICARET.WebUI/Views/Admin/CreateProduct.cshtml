@@ -38,6 +38,15 @@
                 <input asp-for="Price" class="form-control" placeholder="Product Price" />
                 <span asp-validation-for="Price"></span>
             </div>
+
+            <div class="mb-3 col-md-9 offset-md-3">
+                <label asp-for="CatagoryId" class="form-label"></label>
+                <select asp-for="CatagoryId" class="form-control"
+                        asp-items="@ViewBag.Category">
+                    <option value="-1">Lütfen Kategori Seçiniz</option>
+                </select>
+            </div>
+
              <div class="mb-3 col-md-9 offset-md-3">
                 <button type="submit" class="btn btn-primary">Save Product</button>
             </div>

@@ -24,5 +24,6 @@ namespace ETICARET.WebUI.Models
         {
             Images = new List<Image>();
         }
+        public string CatagoryId { get; set; }
     }
 }

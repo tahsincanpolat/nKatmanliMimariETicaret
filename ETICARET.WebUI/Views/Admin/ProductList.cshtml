@@ -1,12 +1,13 @@
 ﻿@model ProductListModel
 @{
     ViewData["Title"] = "Product List";
+    string imageUrl = string.Empty;
 }
 
 <h1>Admin Product</h1>
-<hr/>
+<hr />
 
-@if(Model.Products.Count > 0)
+@if (Model.Products.Count > 0)
 {
     <table class="table table-bordered">
         <thead>
@@ -23,24 +24,30 @@
             {
                 <tr>
                     <td scope="row">@item.Id</td>
-                     <td>
-                         <img src="~/img/@item.Images[0].ImageUrl" width="80"/>
-                     </td>
-                     <td>@item.Name</td>
-                     <td>@item.Price</td>
-                     <td>
-                         <a class="btn btn-warning btn-sm mr-2" href="/admin/products/@item.Id">Edit</a>
-                         <form action="/admin/deleteproduct" method="POST" style="display:inline">
-                             <input type="hidden" name="productId" value="@item.Id">
-                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                         </form>
-                     </td>
+                    <td>
+                        @if (item.Images != null || item.Images?.Count != 0)
+                        {
+                            imageUrl = "../../img/" + item?.Images?.FirstOrDefault()?.ImageUrl;
+                        }
+
+                        <img src="@imageUrl" width="80" />
+                    </td>
+                    <td>@item?.Name</td>
+                    <td>@item?.Price</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm mr-2" href="/admin/products/@item?.Id">Edit</a>
+                        <form action="/admin/deleteproduct" method="POST" style="display:inline">
+                            <input type="hidden" name="productId" value="@item?.Id">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
-    </table>   
+    </table>
 }
-else{
+else
+{
     <div class="alert alert-warning">
         <h4>No Products</h4>
     </div>

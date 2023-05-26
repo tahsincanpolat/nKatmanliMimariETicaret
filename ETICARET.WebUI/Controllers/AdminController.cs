@@ -5,6 +5,7 @@ using ETICARET.WebUI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ETICARET.WebUI.Controllers
 {
@@ -32,13 +33,16 @@ namespace ETICARET.WebUI.Controllers
             {
                 Products = _productService.GetAll()
             });
-            
         }
 
         public IActionResult CreateProduct()
         {
+            var category = _categoryService.GetAll();
+            ViewBag.Category = category.Select(x=> new SelectListItem { Text = x.Name, Value = x.Id.ToString() });    
+
             return View(new ProductModel());
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateProduct(ProductModel model,List<IFormFile> files)
         {
@@ -47,12 +51,18 @@ namespace ETICARET.WebUI.Controllers
 
             if (ModelState.IsValid)
             {
+                if (int.Parse(model.CatagoryId) == -1)
+                {
+                    ModelState.AddModelError("CategoryId", "Lütfen kategori seçiniz.");
+                    ViewBag.Category = _categoryService.GetAll().Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
+                    return View(model);
+                }
+
                 var entity = new Product()
                 {
                     Name = model.Name,
                     Description = model.Description,
                     Price = model.Price,
-
                 };
 
                 if(files != null)
@@ -72,10 +82,13 @@ namespace ETICARET.WebUI.Controllers
                     }
                 }
 
+                entity.ProductCategories = new List<ProductCategory> { new ProductCategory { CategoryId = int.Parse(model.CatagoryId), ProductId = entity.Id } };
+
                 _productService.Create(entity);
 
                 return Redirect("/admin/products");
             }
+            ViewBag.Category = _categoryService.GetAll().Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
             return View(model);
         }
 

@@ -74,3 +74,4 @@ D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\obj\Debug\net6.0\ETICARET.WebUI.cspr
 D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\package-lock.json
 D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\package.json
 D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\TahsinCanpolat\Web\etrade\ETICARET.WebUI\bin\Debug\net6.0\Iyzipay.dll

@@ -11,6 +11,18 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "Iyzipay/2.1.55": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/Iyzipay.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Iyzipay.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/6.0.9": {
         "type": "package",
         "compile": {
@@ -751,6 +763,19 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Iyzipay/2.1.55": {
+      "sha512": "w4UwGNahHAWBv12RK5qIwSiDcmV84bWzBsGJ7Gp2+T1OqFjF6ugQTWamMWIkfCogznd3xO1ftzST8aK9ou5Ypg==",
+      "type": "package",
+      "path": "iyzipay/2.1.55",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "iyzipay.2.1.55.nupkg.sha512",
+        "iyzipay.nuspec",
+        "lib/net45/Iyzipay.dll",
+        "lib/netstandard2.1/Iyzipay.dll"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/6.0.9": {
@@ -2072,6 +2097,7 @@
       "ETICARET.Business >= 1.0.0",
       "ETICARET.DataAccess >= 1.0.0",
       "ETICARET.Entities >= 1.0.0",
+      "Iyzipay >= 2.1.55",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.9",
       "Microsoft.EntityFrameworkCore >= 6.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.9",
@@ -2136,6 +2162,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Iyzipay": {
+            "target": "Package",
+            "version": "[2.1.55, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[6.0.9, )"

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Http;
 using ETICARET.Entities;
 using OrderItem = ETICARET.Entities.OrderItem;
+using ETICARET.WebUI.Extensions;
 
 namespace ETICARET.WebUI.Controllers
 {
@@ -49,16 +50,16 @@ namespace ETICARET.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int productId,int quantity)
+        public IActionResult AddToCart(int productId, int quantity)
         {
-            _cartService.AddToCart(_userManager.GetUserId(User),productId,quantity);
+            _cartService.AddToCart(_userManager.GetUserId(User), productId, quantity);
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult DeleteFromCart(int productId)
         {
-            _cartService.DeleteToCart(_userManager.GetUserId(User),productId);
+            _cartService.DeleteToCart(_userManager.GetUserId(User), productId);
             return RedirectToAction("Index");
         }
 
@@ -101,7 +102,7 @@ namespace ETICARET.WebUI.Controllers
                     CartItems = cart.CartItems.Select(i => new CartItemModel()
                     {
                         CartItemId = i.Id,
-                        ProductId = i.Id,
+                        ProductId = i.Product.Id,
                         Name = i.Product.Name,
                         Price = i.Product.Price,
                         ImageUrl = i.Product.Images[0].ImageUrl,
@@ -112,10 +113,16 @@ namespace ETICARET.WebUI.Controllers
                 // Ödeme 
                 var payment = PaymentProcess(model);
 
-                if(payment.Status == "success")
+                if (payment.Status == "success")
                 {
-                    SaveOrder(model,payment,userId);
+                    SaveOrder(model, payment, userId);
                     ClearCart(cart.Id.ToString());
+                    TempData.Put("message", new ResultMessage()
+                    {
+                        Title = "Order Completed",
+                        Message = "Congratulations, your order has been received.",
+                        Css = "success"
+                    });
                     return View("Success");
                 }
             }
@@ -149,43 +156,43 @@ namespace ETICARET.WebUI.Controllers
             paymentCard.Cvc = model.Cvv;
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
-
+            // Ödeme servisine statik değerler yolladık
             Buyer buyer = new Buyer();
             buyer.Id = "BY789";
-            buyer.Name = model.FirstName;
-            buyer.Surname = model.LastName;
+            buyer.Name = "John";
+            buyer.Surname = "Doe";
             buyer.GsmNumber = "+905446556565";
-            buyer.Email = model.Email;
-            buyer.IdentityNumber = "235235235252"; // Ön yüzde yok eklenecek.
+            buyer.Email = "email@email.com";
+            buyer.IdentityNumber = "235235235252";
             buyer.LastLoginDate = "2023-05-27 11:11:35";
             buyer.RegistrationDate = "2014-10-05 12:43:35";
-            buyer.RegistrationAddress = model.Address;
+            buyer.RegistrationAddress = "Caferağa mah. Kadıköy/İstanbul";
             buyer.Ip = "85.108.129.11";
-            buyer.City = model.City;
+            buyer.City = "İstanbul";
             buyer.Country = "TURKEY";
             buyer.ZipCode = "34000";
             request.Buyer = buyer;
 
 
             Address shippingAddress = new Address();
-            shippingAddress.ContactName = model.FirstName;
-            shippingAddress.City = model.City;
+            shippingAddress.ContactName = "John";
+            shippingAddress.City = "İstanbul";
             shippingAddress.Country = "TURKEY";
-            shippingAddress.Description = model.Address;
+            shippingAddress.Description = "Caferağa mah. Kadıköy/İstanbul";
             shippingAddress.ZipCode = "34000";
             request.ShippingAddress = shippingAddress;
 
             Address billingAddres = new Address();
-            billingAddres.ContactName = model.FirstName;
-            billingAddres.City = model.City;
+            billingAddres.ContactName = "John";
+            billingAddres.City = "İstanbul";
             billingAddres.Country = "TURKEY";
-            billingAddres.Description = model.Address;
+            billingAddres.Description = "Caferağa mah. Kadıköy/İstanbul";
             billingAddres.ZipCode = "34000";
             request.BillingAddress = billingAddres;
 
             List<BasketItem> basketItems = new List<BasketItem>();
             BasketItem basketItem;
-            
+
             foreach (var item in model.CartModel.CartItems)
             {
                 basketItem = new BasketItem();
@@ -193,13 +200,13 @@ namespace ETICARET.WebUI.Controllers
                 basketItem.Name = item.Name;
                 basketItem.Category1 = "Elektronik"; // _productService.GetProductDetails(item.ProductId).ProductCategories.FirstOrDefault().ToString()
                 basketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-                basketItem.Price = item.Price.ToString();
+                basketItem.Price = (item.Price * item.Quantity).ToString().Split(",")[0];
                 basketItems.Add(basketItem);
             }
 
             request.BasketItems = basketItems;
 
-            Payment payment = Payment.Create(request,options);
+            Payment payment = Payment.Create(request, options);
 
             return payment;
 
@@ -209,13 +216,14 @@ namespace ETICARET.WebUI.Controllers
         {
             var order = new Order()
             {
-                OrderNumber = new Guid().ToString(),
+                OrderNumber = Guid.NewGuid().ToString(),
                 OrderState = EnumOrderState.completed,
                 PaymentTypes = EnumPaymentTypes.CreditCart,
                 PaymentId = payment.PaymentId,
                 PaymentToken = Guid.NewGuid().ToString(),
                 ConversionId = payment.ConversationId,
-                OrderDate = new DateTime(),
+                OrderDate = DateTime.Now,
+                OrderNote = "Zile Basma", // Modelden alacak / Ödev
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
@@ -243,6 +251,44 @@ namespace ETICARET.WebUI.Controllers
         public void ClearCart(string cartId)
         {
             _cartService.ClearCart(cartId);
+        }
+
+        public IActionResult GetOrders()
+        {
+            var orders = _orderService.GetOrders(_userManager.GetUserId(User));
+
+            var orderListModel = new List<OrderListModel>();
+
+            OrderListModel orderModel;
+
+            foreach (var order in orders)
+            {
+                orderModel = new OrderListModel();
+                orderModel.OrderId = order.Id;
+                orderModel.OrderNumber = order.OrderNumber;
+                orderModel.OrderDate = order.OrderDate;
+                orderModel.OrderNote = order.OrderNote;
+                orderModel.Phone = order.Phone;
+                orderModel.FirstName = order.FirstName;
+                orderModel.LastName = order.LastName;
+                orderModel.Address = order.Address;
+                orderModel.City = order.City;
+                orderModel.Email = order.Email;
+
+                orderModel.OrderItems = order.OrderItems.Select(i => new OrderItemModel()
+                {
+                    OrderItemId = i.Id,
+                    Name = i.Product.Name,
+                    Price = i.Price,
+                    Quantity = i.Quantity,
+                    ImageUrl = i.Product.Images[0].ImageUrl
+
+                }).ToList();
+
+                orderListModel.Add(orderModel);
+            }
+
+            return View(orderListModel);
         }
     }
 }

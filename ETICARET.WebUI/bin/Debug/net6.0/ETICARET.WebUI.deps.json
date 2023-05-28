@@ -11,6 +11,7 @@
           "ETICARET.Business": "1.0.0",
           "ETICARET.DataAccess": "1.0.0",
           "ETICARET.Entities": "1.0.0",
+          "Iyzipay": "2.1.55",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.9",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.Design": "6.0.9",
@@ -26,6 +27,17 @@
           "lib/netstandard2.0/Humanizer.dll": {
             "assemblyVersion": "2.8.0.0",
             "fileVersion": "2.8.26.1919"
+          }
+        }
+      },
+      "Iyzipay/2.1.55": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Iyzipay.dll": {
+            "assemblyVersion": "2.1.55.0",
+            "fileVersion": "2.1.55.0"
           }
         }
       },
@@ -543,6 +555,13 @@
       "sha512": "sha512-OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
+    },
+    "Iyzipay/2.1.55": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w4UwGNahHAWBv12RK5qIwSiDcmV84bWzBsGJ7Gp2+T1OqFjF6ugQTWamMWIkfCogznd3xO1ftzST8aK9ou5Ypg==",
+      "path": "iyzipay/2.1.55",
+      "hashPath": "iyzipay.2.1.55.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/6.0.9": {
       "type": "package",

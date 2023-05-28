@@ -1,0 +1,69 @@
+﻿@model List<OrderListModel>
+@{
+    ViewData["Title"] = "Get Orders";
+}
+<h1>Your Orders</h1>
+<hr/>
+
+@foreach (var order in Model)
+{
+   <table class="table table-sm mb-5">
+       <thead class="table-light">
+           <tr>
+               <td colspan="2"><strong>Order Id:</strong> #@order.OrderNumber</td>
+               <th>Price</th>
+               <th>Quantity</th>
+           </tr>
+       </thead>
+       <tbody>
+           @foreach (var orderItem in order.OrderItems)
+           {
+               <tr>
+                   <td>
+                       <img src="~/img/@orderItem.ImageUrl" width="90" />
+                   </td>
+                   <td>
+                       @orderItem.Name
+                    </td>
+                    <td>
+                        @orderItem.Price
+                    </td>
+                    <td>
+                        @orderItem.Quantity
+                    </td>
+               </tr>
+           }
+       </tbody>
+       <tfoot>
+           <tr>
+               <td colspan="2"><strong>Customer Name:</strong></td>
+               <td>@order.FirstName @order.LastName</td>
+               <td rowspan="7"><h5>Total: @order.TotalPrice()</h5></td>
+           </tr>
+           <tr>
+               <td colspan="2"><strong>Order Date:</strong></td>
+               <td>@order.OrderDate</td>
+           </tr>
+           <tr>
+               <td colspan="2"><strong>Address:</strong></td>
+               <td>@order.Address</td>
+           </tr>
+           <tr>
+               <td colspan="2"><strong>Phone:</strong></td>
+               <td>@order.Phone</td>
+           </tr>
+            <tr>
+               <td colspan="2"><strong>Email:</strong></td>
+               <td>@order.Email</td>
+           </tr> 
+            <tr>
+               <td colspan="2"><strong>Payment Status:</strong></td>
+               <td>@order.PaymentType</td>
+           </tr> 
+            <tr>
+               <td colspan="2"><strong>Order Status:</strong></td>
+               <td>@order.OrderState</td>
+           </tr>  
+       </tfoot>
+   </table>
+}

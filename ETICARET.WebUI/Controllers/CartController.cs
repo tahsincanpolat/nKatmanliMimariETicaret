@@ -223,7 +223,7 @@ namespace ETICARET.WebUI.Controllers
                 PaymentToken = Guid.NewGuid().ToString(),
                 ConversionId = payment.ConversationId,
                 OrderDate = DateTime.Now,
-                OrderNote = "Zile Basma", // Modelden alacak / Ödev
+                OrderNote = model.OrderNote,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,

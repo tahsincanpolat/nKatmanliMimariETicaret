@@ -13,6 +13,7 @@
         public string ExprationMonth { get; set; }
         public string ExprationYear { get; set; }
         public string Cvv { get; set; }
+        public string OrderNote { get; set; }
         public CartModel CartModel { get; set; }
 
     }

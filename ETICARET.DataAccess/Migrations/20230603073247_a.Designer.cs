@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ETICARET.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230408071612_a")]
+    [Migration("20230603073247_a")]
     partial class a
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

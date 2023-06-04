@@ -73,5 +73,63 @@ namespace ETICARET.WEBAPI.Controllers
             return CreatedAtAction(nameof(GetUser), new { id = user.Id},user);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutUser(string id, User model)
+        {
+            if(id != model.Id)
+            {
+                return BadRequest();
+            }
+
+            var user = await _userManager.Users.Where(i => i.Id == id).FirstOrDefaultAsync();
+
+
+            user.FullName = model.FullName;
+            user.UserName = model.UserName;
+            user.Email = model.EmailAddress;
+
+            try
+            {
+                await _userManager.UpdateAsync(user);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+
+                throw;
+
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteUser(string id)
+        {
+            if (_userManager.Users == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(i => i.Id == id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _userManager.DeleteAsync(user);
+
+            return Ok();
+        }
+
+        private bool UserExists(string id)
+        {
+            return (_userManager.Users?.Any(u => u.Id == id)).GetValueOrDefault();
+        }
+
     }
 }

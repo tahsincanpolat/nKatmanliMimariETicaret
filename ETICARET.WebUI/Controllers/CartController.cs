@@ -87,10 +87,9 @@ namespace ETICARET.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout(OrderModel model)
+        public IActionResult Checkout(OrderModel model,string paymentMethod)
         {
             ModelState.Remove("CartModel");
-
             if (ModelState.IsValid)
             {
                 var userId = _userManager.GetUserId(User);
@@ -109,7 +108,10 @@ namespace ETICARET.WebUI.Controllers
                         Quantity = i.Quantity
                     }).ToList()
                 };
+                //if(paymentMethod == "credit")
+                //{
 
+                //}
                 // Ödeme 
                 var payment = PaymentProcess(model);
 

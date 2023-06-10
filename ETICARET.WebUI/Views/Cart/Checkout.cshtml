@@ -49,11 +49,11 @@
             <hr class="mb-4"/>
             <div class="d-block my-3">
                <div class="custom-control custom-checkbox">
-                    <input type="radio" class="custom-control-input" id="credit" name="paymentMethod" checked required />
+                    <input type="radio" class="custom-control-input" id="credit" name="paymentMethod" onclick="PaymentMethodChangeEvent('credit')" value="credit" checked required />
                     <label for="credit" class="custom-control-label">Credit Card</label>
                 </div>
                 <div class="custom-control custom-checkbox">
-                    <input type="radio" class="custom-control-input" id="eft" name="paymentMethod" required />
+                    <input type="radio" class="custom-control-input" id="eft" name="paymentMethod" onclick="PaymentMethodChangeEvent('eft')" value="eft" required />
                     <label for="eft" class="custom-control-label">EFT</label>
                 </div>
             </div>
